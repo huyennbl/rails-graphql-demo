@@ -1,5 +1,6 @@
 module Types
   class MutationType < Types::BaseObject
+    field :add_book_author, mutation: Mutations::AddBookAuthor
     field :create_book, mutation: Mutations::CreateBook
     # TODO: remove me
     field :test_field, String, null: false,
