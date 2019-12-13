@@ -5,6 +5,17 @@ module Types
       Book.all
     end
 
+    field :book, Types::BookType, null: true do
+      argument :id, ID, required: true
+      argument :title, String, required: false
+    end
+
+    def book(id:, title: nil)
+      conditions = {}
+      conditions[:id] = id if id
+      conditions[:title] = title if title
+      Book.find_by(conditions)
+    end
 
     field :authors, [Types::AuthorType], null: false
     def authors
